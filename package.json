@@ -1,0 +1,15 @@
+{
+  "name": "jobscheduler",
+  "version": "1.0.0",
+  "description": "jobscheduer",
+  "main": "index.js",
+  "scripts": {
+    "test-server": "npm run test --workspace=server"
+  },
+  "author": "Mario Rivero",
+  "license": "ISC",
+  "workspaces": [
+    "client",
+    "server"
+  ]
+}
