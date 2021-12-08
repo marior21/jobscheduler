@@ -20,7 +20,7 @@
     "jsxImportSource": "react",
     "paths": {
       "@jobscheduler/server": [
-        "../server/src/index.ts"
+        "../server/src/index.js"
       ]
     }
   },

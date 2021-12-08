@@ -2,10 +2,12 @@
   "name": "jobscheduler",
   "version": "1.0.0",
   "description": "jobscheduler",
-  "main": "index.js",
   "scripts": {
     "test-server": "npm run test --workspace=packages/server",
-    "start-client": "npm run dev --workspace=packages/client"
+    "start-client": "npm run dev --workspace=packages/client",
+    "start-server": "npm run start --workspace=packages/server",
+    "build-server": "npm run build --workspace=packages/server",
+    "prebuild-server": "npm run prebuild --workspace=packages/server"
   },
   "author": "Mario Rivero",
   "license": "ISC",

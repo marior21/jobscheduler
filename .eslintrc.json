@@ -1,14 +1,28 @@
 {
+  "root": true,
   "env": {
     "browser": false,
     "es6": true,
     "node": true
   },
-  "parser": "@typescript-eslint/parser",
-  "files": [
-    "*.ts",
-    "*.tsx"
+  "overrides": [
+    {
+      "files": [
+        "**/*.ts",
+        "**/*.tsx"
+      ], // Your TypeScript files extension
+      "parserOptions": {
+        "project": [
+          "./tsconfig.json"
+        ] // Specify it only for TypeScript files
+      }
+    }
   ],
+  "parser": "@typescript-eslint/parser",
+  // "files": [
+  //   "*.ts",
+  //   "*.tsx"
+  // ],
   "parserOptions": {
     "project": "./tsconfig.json",
     "sourceType": "module"
