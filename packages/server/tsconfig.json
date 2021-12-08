@@ -1,42 +1,23 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "incremental": true,
+    "rootDir": ".",
     "outDir": "./dist",
     "baseUrl": ".",
-    "moduleResolution": "Node",
-    "module": "CommonJS",
-    "target": "ES2018",
     "sourceMap": true,
-    "lib": [
-      "esnext"
-    ],
-    "esModuleInterop": true,
-    "alwaysStrict": true,
-    "strictNullChecks": false,
-    "noImplicitAny": false,
-    "noImplicitReturns": true,
-    "noImplicitThis": false,
-    "noUnusedLocals": true,
     "resolveJsonModule": true,
-    "paths": {
-      "@jobscheduler/*": [
-        "packages/server/src/index.ts",
-        "packages/client/src/main.tsx"
-      ]
-    }
+    "composite": true,
+    "allowJs": false,
+    "declaration": true,
+    "declarationMap": true,
+    "allowSyntheticDefaultImports": true
   },
-  "references": [
-    {
-      "path": "packages/client"
-    },
-    {
-      "path": "packages/server"
-    }
+  "include": [
+    "src/**/*"
   ],
   "exclude": [
     "node_modules",
-    "dist",
-    "*.d.ts"
+    "dist"
   ]
 }
 // {
@@ -60,7 +41,7 @@
 //     "strictNullChecks": false
 //   },
 //   "include": [
-//     "server/src/**/*",
-//     "server/__tests__/**/*"
+//     "src/**/*",
+//     "__tests__/**/*"
 //   ]
 // }

@@ -5,11 +5,18 @@
     "node": true
   },
   "parser": "@typescript-eslint/parser",
+  "files": [
+    "*.ts",
+    "*.tsx"
+  ],
   "parserOptions": {
-    "project": "tsconfig.json",
+    "project": "./tsconfig.json",
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint", "jest"],
+  "plugins": [
+    "@typescript-eslint",
+    "jest"
+  ],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",

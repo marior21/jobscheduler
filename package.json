@@ -1,15 +1,24 @@
 {
   "name": "jobscheduler",
   "version": "1.0.0",
-  "description": "jobscheduer",
+  "description": "jobscheduler",
   "main": "index.js",
   "scripts": {
-    "test-server": "npm run test --workspace=server"
+    "test-server": "npm run test --workspace=packages/server",
+    "start-client": "npm run dev --workspace=packages/client"
   },
   "author": "Mario Rivero",
   "license": "ISC",
   "workspaces": [
-    "client",
-    "server"
-  ]
+    "packages/client",
+    "packages/server"
+  ],
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "~4.31.1",
+    "@typescript-eslint/parser": "~4.31.1",
+    "eslint": "~7.32.0",
+    "eslint-config-prettier": "~8.3.0",
+    "eslint-plugin-jest": "~24.4.2",
+    "prettier": "~2.4.1"
+  }
 }
