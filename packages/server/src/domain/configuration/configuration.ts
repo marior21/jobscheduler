@@ -6,6 +6,7 @@ import MonthlyConfiguration from "./monthlyConfiguration";
 import WeeklyConfiguration from "./weeklyConfiguration";
 
 export default class Configuration {
+    private readonly _user: string;
     private readonly _schedulerType: SchedulerType;
     private readonly _occurs: Occurs;
     private readonly _enabled: boolean;
@@ -16,6 +17,7 @@ export default class Configuration {
     private readonly _monthlyConfiguration: MonthlyConfiguration;
 
     constructor(
+        user: string,
         schedulerType: SchedulerType,
         enabled: boolean,
         occurs: Occurs,
@@ -25,6 +27,7 @@ export default class Configuration {
         dailyConfiguration: DailyConfiguration,
         monthlyConfiguration: MonthlyConfiguration
     ) {
+        this._user = user;
         this._schedulerType = schedulerType;
         this._occurs = occurs;
         this._limits = limits;
@@ -39,8 +42,12 @@ export default class Configuration {
 
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     static create(props: any): Configuration {
-        const { schedulerType, occurs, enabled, onceDate, startLimitDate } = props;
-        return new Configuration(schedulerType, enabled, occurs, onceDate, new Limits(startLimitDate, null), null, null, null);
+        const { user, schedulerType, occurs, enabled, onceDate, startLimitDate } = props;
+        return new Configuration(user, schedulerType, enabled, occurs, onceDate, new Limits(startLimitDate, null), null, null, null);
+    }
+
+    get user(): string {
+        return this._user;
     }
 
     get schedulerType(): SchedulerType {

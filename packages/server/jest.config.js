@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   testEnvironment: 'node',
   transform: {
     "^.+\\.tsx?$": "ts-jest"
@@ -17,4 +17,8 @@ export default {
     'src/**/*.{ts,tsx,js,jsx}',
     '!src/**/*.d.ts',
   ],
+  testPathIgnorePatterns: [
+    "node_modules",
+    "dist"
+  ]
 };

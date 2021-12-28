@@ -14,7 +14,7 @@ export default class Db {
     public static async query(text: string, params: any): Promise<any> {
         const start = Date.now();
         const res = await pool.query(text, params);
-        pool.end();
+        //pool.end();
         const duration = Date.now() - start;
         console.log('executed query', { text, duration, rows: res.rowCount });
         return res

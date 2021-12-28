@@ -14,47 +14,47 @@ describe('configuration', () => {
   test('configuration throw error if schedulertype is null', () => {
     const startDate: Date = new Date(2020, 0, 1);
     const limits: Limits = new Limits(startDate, null);
-    expect(() => new Configuration(null, true, null, new Date(4, 5, 2020), limits, null, null, null)).toThrowError();
+    expect(() => new Configuration('', null, true, null, new Date(4, 5, 2020), limits, null, null, null)).toThrowError();
   });
 
   test('configuration throw error if enabled is null', () => {
     const startDate: Date = new Date(2020, 0, 1);
     const limits: Limits = new Limits(startDate, null);
-    expect(() => new Configuration(SchedulerType.Once, null, null, new Date(4, 5, 2020), limits, null, null, null)).toThrowError();
+    expect(() => new Configuration('', SchedulerType.Once, null, null, new Date(4, 5, 2020), limits, null, null, null)).toThrowError();
   });
 
   test('configuration throw error if limits is null', () => {
-    expect(() => new Configuration(SchedulerType.Once, true, null, new Date(4, 5, 2020), null, null, null, null)).toThrowError();
+    expect(() => new Configuration('', SchedulerType.Once, true, null, new Date(4, 5, 2020), null, null, null, null)).toThrowError();
   });
 
   test('configuration throw error if oncedata is null', () => {
     const startDate: Date = new Date(2020, 0, 1);
     const limits: Limits = new Limits(startDate, null);
-    expect(() => new Configuration(SchedulerType.Once, true, null, null, limits, null, null, null)).toThrowError();
+    expect(() => new Configuration('', SchedulerType.Once, true, null, null, limits, null, null, null)).toThrowError();
   });
 
   test('configuration throw error if occurs is null', () => {
     const startDate: Date = new Date(2020, 0, 1);
     const limits: Limits = new Limits(startDate, null);
-    expect(() => new Configuration(SchedulerType.Recurring, true, null, null, limits, null, null, null)).toThrowError();
+    expect(() => new Configuration('', SchedulerType.Recurring, true, null, null, limits, null, null, null)).toThrowError();
   });
 
   test('configuration throw error if weeklyConfiguration is null', () => {
     const startDate: Date = new Date(2020, 0, 1);
     const limits: Limits = new Limits(startDate, null);
-    expect(() => new Configuration(SchedulerType.Recurring, true, Occurs.Weekly, null, limits, null, null, null)).toThrowError();
+    expect(() => new Configuration('', SchedulerType.Recurring, true, Occurs.Weekly, null, limits, null, null, null)).toThrowError();
   });
 
   test('configuration throw error if dailyConfiguration is null', () => {
     const startDate: Date = new Date(2020, 0, 1);
     const limits: Limits = new Limits(startDate, null);
-    expect(() => new Configuration(SchedulerType.Recurring, true, Occurs.Daily, null, limits, null, null, null)).toThrowError();
+    expect(() => new Configuration('', SchedulerType.Recurring, true, Occurs.Daily, null, limits, null, null, null)).toThrowError();
   });
 
   test('configuration throw error if monthlyConfiguration is null', () => {
     const startDate: Date = new Date(2020, 0, 1);
     const limits: Limits = new Limits(startDate, null);
-    expect(() => new Configuration(SchedulerType.Recurring, true, Occurs.Monthly, null, limits, null, null, null)).toThrowError();
+    expect(() => new Configuration('', SchedulerType.Recurring, true, Occurs.Monthly, null, limits, null, null, null)).toThrowError();
   });
 
   test('monthlyConfiguration throw error if frecuencyType is null', () => {

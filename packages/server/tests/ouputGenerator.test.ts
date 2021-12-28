@@ -20,7 +20,7 @@ describe('ouput generator', () => {
     week.saturday = true;
     const weeklyConfiguration: WeeklyConfiguration = new WeeklyConfiguration(3, week);
     const dailayConfiguration: DailyConfiguration = new DailyConfiguration(null, null, TimeUnit.Hours, 2, starTime, endTime);
-    const configuration: Configuration = new Configuration(SchedulerType.Recurring, true, Occurs.Weekly, null, limits, weeklyConfiguration, dailayConfiguration, null);
+    const configuration: Configuration = new Configuration('', SchedulerType.Recurring, true, Occurs.Weekly, null, limits, weeklyConfiguration, dailayConfiguration, null);
     const ouputGenerator: OuputGenerator = new OuputGenerator(configuration);
     expect(ouputGenerator.getOuput(new Date(2020, 4, 16)).description).toStrictEqual(
       'Ocurrs every 3 weeks on monday, tuesday and saturday every 2 Hours between 04:00:00 and 18:00:00 starting on 01/01/2020'
@@ -38,7 +38,7 @@ describe('ouput generator', () => {
     week.sunday = true;
     const weeklyConfiguration: WeeklyConfiguration = new WeeklyConfiguration(3, week);
     const dailayConfiguration: DailyConfiguration = new DailyConfiguration(null, new Date(null, null, null, 14, 45, 12), null, null, null, null);
-    const configuration: Configuration = new Configuration(SchedulerType.Recurring, true, Occurs.Weekly, null, limits, weeklyConfiguration, dailayConfiguration, null);
+    const configuration: Configuration = new Configuration('', SchedulerType.Recurring, true, Occurs.Weekly, null, limits, weeklyConfiguration, dailayConfiguration, null);
     const ouputGenerator: OuputGenerator = new OuputGenerator(configuration);
     expect(ouputGenerator.getOuput(new Date(2020, 4, 16)).description).toStrictEqual(
       'Ocurrs every 3 weeks on monday, tuesday, saturday and sunday at 14:45:12 starting on 01/01/2020'
@@ -49,7 +49,7 @@ describe('ouput generator', () => {
     const startDate: Date = new Date(2020, 0, 1);
     const limits: Limits = new Limits(startDate, null);
     const dailayConfiguration: DailyConfiguration = new DailyConfiguration(1, null, null, null, null, null);
-    const configuration: Configuration = new Configuration(SchedulerType.Recurring, true, Occurs.Daily, null, limits, null, dailayConfiguration, null);
+    const configuration: Configuration = new Configuration('', SchedulerType.Recurring, true, Occurs.Daily, null, limits, null, dailayConfiguration, null);
     const ouputGenerator: OuputGenerator = new OuputGenerator(configuration);
     expect(ouputGenerator.getOuput(new Date(2020, 4, 16)).description).toStrictEqual(
       'Ocurrs every day starting on 01/01/2020'
@@ -60,7 +60,7 @@ describe('ouput generator', () => {
     const startDate: Date = new Date(2020, 0, 1);
     const limits: Limits = new Limits(startDate, null);
     const dailayConfiguration: DailyConfiguration = new DailyConfiguration(4, null, null, null, null, null);
-    const configuration: Configuration = new Configuration(SchedulerType.Recurring, true, Occurs.Daily, null, limits, null, dailayConfiguration, null);
+    const configuration: Configuration = new Configuration('', SchedulerType.Recurring, true, Occurs.Daily, null, limits, null, dailayConfiguration, null);
     const ouputGenerator: OuputGenerator = new OuputGenerator(configuration);
     expect(ouputGenerator.getOuput(new Date(2020, 4, 16)).description).toStrictEqual(
       'Ocurrs each 4 days starting on 01/01/2020'
@@ -71,7 +71,7 @@ describe('ouput generator', () => {
     const startDate: Date = new Date(2020, 0, 1);
     const limits: Limits = new Limits(startDate, null);
     const monthlyConfiguration: MonthlyConfiguration = new MonthlyConfiguration(MonthlyFrecuencyType.exactDay, 5, 3, null, null);
-    const configuration: Configuration = new Configuration(SchedulerType.Recurring, true, Occurs.Monthly, null, limits, null, null, monthlyConfiguration);
+    const configuration: Configuration = new Configuration('', SchedulerType.Recurring, true, Occurs.Monthly, null, limits, null, null, monthlyConfiguration);
     const ouputGenerator: OuputGenerator = new OuputGenerator(configuration);
     expect(ouputGenerator.getOuput(new Date(2020, 4, 16)).description).toStrictEqual(
       'Ocurrs the day 5 of very 3 months starting on 01/01/2020'

@@ -23,7 +23,7 @@ describe('scheduler monthly', () => {
       const monthlyConfiguration: MonthlyConfiguration =
         new MonthlyConfiguration(MonthlyFrecuencyType.exactDay, 7, 3, null, null);
       const configuration: Configuration =
-        new Configuration(SchedulerType.Recurring, true, Occurs.Monthly, null, limits, null, dailayConfiguration, monthlyConfiguration);
+        new Configuration('', SchedulerType.Recurring, true, Occurs.Monthly, null, limits, null, dailayConfiguration, monthlyConfiguration);
 
       const scheduler: Scheduler = SchedulerFactory.create(configuration);
 
@@ -51,7 +51,7 @@ describe('scheduler monthly', () => {
       const monthlyConfiguration: MonthlyConfiguration =
         new MonthlyConfiguration(MonthlyFrecuencyType.variableDay, null, 3, VariableDayNumber.First, VariableDayType.Day);
       const configuration: Configuration =
-        new Configuration(SchedulerType.Recurring, true, Occurs.Monthly, null, limits, null, dailayConfiguration, monthlyConfiguration);
+        new Configuration('', SchedulerType.Recurring, true, Occurs.Monthly, null, limits, null, dailayConfiguration, monthlyConfiguration);
 
       const scheduler: Scheduler = SchedulerFactory.create(configuration);
 
@@ -77,7 +77,7 @@ describe('scheduler monthly', () => {
       const monthlyConfiguration: MonthlyConfiguration =
         new MonthlyConfiguration(MonthlyFrecuencyType.variableDay, null, 3, VariableDayNumber.First, VariableDayType.Day);
       const configuration: Configuration =
-        new Configuration(SchedulerType.Recurring, true, Occurs.Monthly, null, limits, null, null, monthlyConfiguration);
+        new Configuration('', SchedulerType.Recurring, true, Occurs.Monthly, null, limits, null, null, monthlyConfiguration);
 
       const scheduler: Scheduler = SchedulerFactory.create(configuration);
 

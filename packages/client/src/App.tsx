@@ -1,15 +1,34 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import logo from './logo.svg'
 import './App.css'
 
 function App(): JSX.Element {
   const [count, setCount] = useState(0)
+  const useFetch = (url) => {
+    const [data, setData] = useState(null);
+
+    // empty array as second argument equivalent to componentDidMount
+    useEffect(() => {
+      async function fetchData() {
+        const response = await fetch(url);
+        const json = await response.json();
+        setData(json);
+      }
+      fetchData();
+    }, [url]);
+
+    return data;
+  };
+  const result = useFetch('http://localhost:8081/configurations');
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>Hello Vite + React!eeee</p>
+        <div>
+          {JSON.stringify(result)}
+        </div>
         <p>
           <button type="button" onClick={() => setCount((count) => count + 1)}>
             count is: {count}

@@ -1,7 +1,6 @@
 {
   "name": "@jobscheduler/server",
   "version": "1.0.0",
-  "type": "module",
   "description": "Exersice clean code with Node.js development in TypeScript.",
   "engines": {
     "node": ">= 14.16 <15"
@@ -20,7 +19,7 @@
   },
   "main": ".dist/index.js",
   "scripts": {
-    "start": "node .",
+    "start": "tsc && node ./dist/src/index.js ",
     "clean": "rimraf coverage build tmp",
     "prebuild": "npm run lint",
     "build": "tsc -p tsconfig.release.json",
@@ -33,6 +32,7 @@
   "author": "Mario Rivero",
   "license": "Apache-2.0",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "pg": "^8.7.1",
     "tslib": "~2.3.1"

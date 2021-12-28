@@ -15,7 +15,7 @@ const currentDate: Date = new Date(2020, 0, 4);
 function getOnceScheduler(enabled: boolean): Scheduler {
   const startDate: Date = new Date(2020, 0, 1);
   const limits: Limits = new Limits(startDate, null);
-  const configuration: Configuration = new Configuration(SchedulerType.Once, enabled, null, onceDate, limits, null, null, null);
+  const configuration: Configuration = new Configuration('', SchedulerType.Once, enabled, null, onceDate, limits, null, null, null);
 
   return SchedulerFactory.create(configuration);
 };
@@ -25,7 +25,7 @@ function getRecurringScheduler(enabled: boolean, ocurrs: Occurs, limits: Limits)
   const startDate: Date = new Date(2020, 0, 1);
   const limitsArg: Limits = limits != null ? limits : new Limits(startDate, null);
   const dailayConfiguration: DailyConfiguration = new DailyConfiguration(1, null, null, null, null, null);
-  const configuration: Configuration = new Configuration(SchedulerType.Recurring, enabled, ocurrs, currentDate, limitsArg, null, dailayConfiguration, null);
+  const configuration: Configuration = new Configuration('', SchedulerType.Recurring, enabled, ocurrs, currentDate, limitsArg, null, dailayConfiguration, null);
 
   return SchedulerFactory.create(configuration);
 };
@@ -53,7 +53,7 @@ describe('scheduler recurring', () => {
     const startDate: Date = new Date(2020, 0, 1);
     const limits: Limits = new Limits(startDate, null);
     const dailayConfiguration: DailyConfiguration = new DailyConfiguration(1, null, null, null, null, null);
-    const configuration: Configuration = new Configuration(SchedulerType.Recurring, true, Occurs.Daily, currentDate, limits, null, dailayConfiguration, null);
+    const configuration: Configuration = new Configuration('', SchedulerType.Recurring, true, Occurs.Daily, currentDate, limits, null, dailayConfiguration, null);
 
     const scheduler: Scheduler = SchedulerFactory.create(configuration);
     const ouput: Ouput = scheduler.getNextDateTime(currentDate);
@@ -87,7 +87,7 @@ describe('scheduler recurring', () => {
       const startDate: Date = new Date(2020, 0, 1);
       const limits: Limits = new Limits(startDate, null);
       const dailayConfiguration: DailyConfiguration = new DailyConfiguration(frecuency, occurOnceTime, null, null, null, null);
-      const configuration: Configuration = new Configuration(SchedulerType.Recurring, true, Occurs.Daily, currentDate, limits, null, dailayConfiguration, null);
+      const configuration: Configuration = new Configuration('', SchedulerType.Recurring, true, Occurs.Daily, currentDate, limits, null, dailayConfiguration, null);
 
       const scheduler: Scheduler = SchedulerFactory.create(configuration);
 
@@ -111,7 +111,7 @@ describe('scheduler recurring', () => {
       const starTime = new Date(null, null, null, 4);
       const endTime = new Date(null, null, null, 18);
       const dailayConfiguration: DailyConfiguration = new DailyConfiguration(frecuency, null, timeUnit, occursEveryNumber, starTime, endTime);
-      const configuration: Configuration = new Configuration(SchedulerType.Recurring, true, Occurs.Daily, null, limits, null, dailayConfiguration, null);
+      const configuration: Configuration = new Configuration('', SchedulerType.Recurring, true, Occurs.Daily, null, limits, null, dailayConfiguration, null);
 
       const scheduler: Scheduler = SchedulerFactory.create(configuration);
 
@@ -140,7 +140,7 @@ describe('scheduler recurring', () => {
       week.tuesday = true;
       week.saturday = true;
       const weeklyConfiguration: WeeklyConfiguration = new WeeklyConfiguration(inputNumberWeeks, week);
-      const configuration: Configuration = new Configuration(SchedulerType.Recurring, true, Occurs.Weekly, null, limits, weeklyConfiguration, null, null);
+      const configuration: Configuration = new Configuration('', SchedulerType.Recurring, true, Occurs.Weekly, null, limits, weeklyConfiguration, null, null);
 
       const scheduler: Scheduler = SchedulerFactory.create(configuration);
 
@@ -171,7 +171,7 @@ describe('scheduler recurring', () => {
       week.saturday = true;
       const weeklyConfiguration: WeeklyConfiguration = new WeeklyConfiguration(inputNumberWeeks, week);
       const dailayConfiguration: DailyConfiguration = new DailyConfiguration(null, occurOnceTime, null, null, null, null);
-      const configuration: Configuration = new Configuration(SchedulerType.Recurring, true, Occurs.Weekly, null, limits, weeklyConfiguration, dailayConfiguration, null);
+      const configuration: Configuration = new Configuration('', SchedulerType.Recurring, true, Occurs.Weekly, null, limits, weeklyConfiguration, dailayConfiguration, null);
 
       const scheduler: Scheduler = SchedulerFactory.create(configuration);
 
@@ -200,7 +200,7 @@ describe('scheduler recurring', () => {
       week.saturday = true;
       const weeklyConfiguration: WeeklyConfiguration = new WeeklyConfiguration(inputNumberWeeks, week);
       const dailayConfiguration: DailyConfiguration = new DailyConfiguration(null, null, timeUnit, occursEveryNumber, starTime, endTime);
-      const configuration: Configuration = new Configuration(SchedulerType.Recurring, true, Occurs.Weekly, null, limits, weeklyConfiguration, dailayConfiguration, null);
+      const configuration: Configuration = new Configuration('', SchedulerType.Recurring, true, Occurs.Weekly, null, limits, weeklyConfiguration, dailayConfiguration, null);
 
       const scheduler: Scheduler = SchedulerFactory.create(configuration);
 
