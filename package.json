@@ -7,7 +7,8 @@
     "start-client": "npm run dev --workspace=packages/client",
     "start-server": "npm run start --workspace=packages/server",
     "build-server": "npm run build --workspace=packages/server",
-    "prebuild-server": "npm run prebuild --workspace=packages/server"
+    "prebuild-server": "npm run prebuild --workspace=packages/server",
+    "lint": "eslint . --ext .ts,.tsx"
   },
   "author": "Mario Rivero",
   "license": "MIT",

@@ -1,1 +1,3 @@
 /**/*.js
+.eslintrc.json
+vite.config.ts

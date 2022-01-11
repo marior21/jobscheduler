@@ -40,7 +40,11 @@
     "dist",
     "build",
     "*.d.ts"
-  ]
+  ],
+  "include": [
+    "src/**/*.ts",
+    "tests/**/*.ts"
+  ],
 }
 // {
 //   "compilerOptions": {
