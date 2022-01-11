@@ -2,12 +2,15 @@
   "root": true,
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": "./tsconfig.json"
+    "project": [
+      "./tsconfig.json",
+      "./packages/server/tsconfig.json",
+      "./packages/client/tsconfig.json"
+    ]
   },
   "extends": [
     "eslint:recommended",
     "prettier",
-    "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:jest/recommended",
     "prettier"
@@ -24,6 +27,7 @@
     "dist",
     "node_modules",
     "examples",
-    "scripts"
+    "scripts",
+    "builds"
   ]
 }

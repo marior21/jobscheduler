@@ -26,7 +26,7 @@ export default class OuputGenerator {
             when = frecuencyType === MonthlyFrecuencyType.variableDay
                 ? `the ${frecuencyVariableDay} ${variableDayType}`
                 : `the day ${day}`;
-            when += ` of very ${everyMonths} months`;
+            when += ` of every ${everyMonths} months`;
         }
         if (this._configuration.dailyConfiguration?.occursOnceTime != null) {
             when += ` at ${Utils.formatTime(this._configuration.dailyConfiguration.occursOnceTime)}`

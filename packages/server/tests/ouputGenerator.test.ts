@@ -74,7 +74,7 @@ describe('ouput generator', () => {
     const configuration: Configuration = new Configuration('', SchedulerType.Recurring, true, Occurs.Monthly, null, limits, null, null, monthlyConfiguration);
     const ouputGenerator: OuputGenerator = new OuputGenerator(configuration);
     expect(ouputGenerator.getOuput(new Date(2020, 4, 16)).description).toStrictEqual(
-      'Ocurrs the day 5 of very 3 months starting on 01/01/2020'
+      'Ocurrs the day 5 of every 3 months starting on 01/01/2020'
     );
   });
 });
