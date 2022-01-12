@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import Configuration from "../configuration/configuration";
 import { SchedulerType } from "../enums";
 import Scheduler from "./scheduler";
@@ -9,7 +10,7 @@ export default class SchedulerFactory {
     public static create(configuration: Configuration): Scheduler {
         switch (configuration.schedulerType) {
             case SchedulerType.Once:
-                return new SchedulerOnce(configuration.enabled, configuration.oncedate, configuration.limits);
+                return new SchedulerOnce(configuration.enabled, configuration.oncedate!, configuration.limits);
             case SchedulerType.Recurring:
                 return new SchedulerRecurring(configuration);
         }
