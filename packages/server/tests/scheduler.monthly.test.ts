@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import Limits from "../src/domain/configuration/limits";
 import { MonthlyFrecuencyType, Occurs, SchedulerType, TimeUnit, VariableDayNumber, VariableDayType } from "../src/domain/enums";
 import Scheduler from "../src/domain/scheduler/scheduler";
@@ -14,8 +15,8 @@ describe('scheduler monthly', () => {
   ])('next date calculate is correct with monthly configuration the day 7 each 3 months start %p with evey %p %p unit and between 04:00 and 18:00 hour',
     (inputDate: Date, occursEveryNumber: number, timeUnit: TimeUnit, expectedDate: Date, nextMonthsExpectedDate: Date, nextMonthsExpectedDate2: Date) => {
       const startDate: Date = new Date(2020, 0, 1);
-      const starTime = new Date(null, null, null, 4);
-      const endTime = new Date(null, null, null, 18);
+      const starTime = new Date(0, 0, 0, 4);
+      const endTime = new Date(0, 0, 0, 18);
       const limits: Limits = new Limits(startDate, null);
 
       const dailayConfiguration: DailyConfiguration =
@@ -27,13 +28,13 @@ describe('scheduler monthly', () => {
 
       const scheduler: Scheduler = SchedulerFactory.create(configuration);
 
-      let nextDate: Date = scheduler.getNextDateTime(inputDate).nextDate;
+      let nextDate: Date | undefined = scheduler.getNextDateTime(inputDate!)?.nextDate;
       expect(nextDate).toStrictEqual(expectedDate);
 
-      nextDate = scheduler.getNextDateTime(nextDate).nextDate;
+      nextDate = scheduler.getNextDateTime(nextDate!)?.nextDate;
       expect(nextDate).toStrictEqual(nextMonthsExpectedDate);
 
-      nextDate = scheduler.getNextDateTime(nextDate).nextDate;
+      nextDate = scheduler.getNextDateTime(nextDate!)?.nextDate;
       expect(nextDate).toStrictEqual(nextMonthsExpectedDate2);
     });
 
@@ -42,8 +43,8 @@ describe('scheduler monthly', () => {
   ])('next date calculate is correct with monthly configuration the first day each 3 months start %p with evey %p %p unit and between 04:00 and 18:00 hour',
     (inputDate: Date, occursEveryNumber: number, timeUnit: TimeUnit, expectedDate: Date, nextMonthsExpectedDate: Date, nextMonthsExpectedDate2: Date) => {
       const startDate: Date = new Date(2020, 0, 1);
-      const starTime = new Date(null, null, null, 4);
-      const endTime = new Date(null, null, null, 18);
+      const starTime = new Date(0, 0, 0, 4);
+      const endTime = new Date(0, 0, 0, 18);
       const limits: Limits = new Limits(startDate, null);
 
       const dailayConfiguration: DailyConfiguration =
@@ -55,13 +56,13 @@ describe('scheduler monthly', () => {
 
       const scheduler: Scheduler = SchedulerFactory.create(configuration);
 
-      let nextDate: Date = scheduler.getNextDateTime(inputDate).nextDate;
+      let nextDate: Date | undefined = scheduler.getNextDateTime(inputDate)?.nextDate;
       expect(nextDate).toStrictEqual(expectedDate);
 
-      nextDate = scheduler.getNextDateTime(nextDate).nextDate;
+      nextDate = scheduler.getNextDateTime(nextDate!)?.nextDate;
       expect(nextDate).toStrictEqual(nextMonthsExpectedDate);
 
-      nextDate = scheduler.getNextDateTime(nextDate).nextDate;
+      nextDate = scheduler.getNextDateTime(nextDate!)?.nextDate;
       expect(nextDate).toStrictEqual(nextMonthsExpectedDate2);
     });
 
@@ -81,13 +82,13 @@ describe('scheduler monthly', () => {
 
       const scheduler: Scheduler = SchedulerFactory.create(configuration);
 
-      let nextDate: Date = scheduler.getNextDateTime(inputDate).nextDate;
+      let nextDate: Date | undefined = scheduler.getNextDateTime(inputDate)?.nextDate;
       expect(nextDate).toStrictEqual(expectedDate);
 
-      nextDate = scheduler.getNextDateTime(nextDate).nextDate;
+      nextDate = scheduler.getNextDateTime(nextDate!)?.nextDate;
       expect(nextDate).toStrictEqual(nextMonthsExpectedDate);
 
-      nextDate = scheduler.getNextDateTime(nextDate).nextDate;
+      nextDate = scheduler.getNextDateTime(nextDate!)?.nextDate;
       expect(nextDate).toStrictEqual(nextMonthsExpectedDate2);
     });
 

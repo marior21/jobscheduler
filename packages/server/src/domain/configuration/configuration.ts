@@ -8,24 +8,24 @@ import WeeklyConfiguration from "./weeklyConfiguration";
 export default class Configuration {
     private readonly _user: string;
     private readonly _schedulerType: SchedulerType;
-    private readonly _occurs: Occurs;
+    private readonly _occurs: Occurs | null;
     private readonly _enabled: boolean;
     private readonly _limits: Limits;
-    private readonly _onceDate: Date;
-    private readonly _weeklyConfiguration: WeeklyConfiguration;
-    private readonly _dailyConfiguration: DailyConfiguration;
-    private readonly _monthlyConfiguration: MonthlyConfiguration;
+    private readonly _onceDate: Date | null;
+    private readonly _weeklyConfiguration: WeeklyConfiguration | null;
+    private readonly _dailyConfiguration: DailyConfiguration | null;
+    private readonly _monthlyConfiguration: MonthlyConfiguration | null;
 
     constructor(
         user: string,
         schedulerType: SchedulerType,
         enabled: boolean,
-        occurs: Occurs,
-        onceDate: Date,
+        occurs: Occurs | null,
+        onceDate: Date | null,
         limits: Limits,
-        weeklyConfiguration: WeeklyConfiguration,
-        dailyConfiguration: DailyConfiguration,
-        monthlyConfiguration: MonthlyConfiguration
+        weeklyConfiguration: WeeklyConfiguration | null,
+        dailyConfiguration: DailyConfiguration | null,
+        monthlyConfiguration: MonthlyConfiguration | null
     ) {
         this._user = user;
         this._schedulerType = schedulerType;
@@ -54,7 +54,7 @@ export default class Configuration {
         return this._schedulerType;
     }
 
-    get ocurrs(): Occurs {
+    get ocurrs(): Occurs | null {
         return this._occurs;
     }
 
@@ -66,20 +66,20 @@ export default class Configuration {
         return this._enabled;
     }
 
-    get oncedate(): Date {
+    get oncedate(): Date | null {
         return this._onceDate;
     }
 
-    get weeklyConfiguration(): WeeklyConfiguration {
+    get weeklyConfiguration(): WeeklyConfiguration | null {
         return this._weeklyConfiguration;
     }
 
-    get dailyConfiguration(): DailyConfiguration {
+    get dailyConfiguration(): DailyConfiguration | null {
         return this._dailyConfiguration;
     }
 
 
-    public get monthlyConfiguration(): MonthlyConfiguration {
+    public get monthlyConfiguration(): MonthlyConfiguration | null {
         return this._monthlyConfiguration;
     }
 
@@ -101,14 +101,14 @@ export default class Configuration {
                 throw new Error("MonthlyConfiguration must have a value");
             }
         }
-        if (this.limits === null) {
-            throw new Error("Limits must have a value");
-        }
-        if (this.enabled === null) {
-            throw new Error("Enabled must have a value");
-        }
-        if (this.schedulerType === null) {
-            throw new Error("schedulerType must have a value");
-        }
+        // if (this.limits === null) {
+        //     throw new Error("Limits must have a value");
+        // }
+        // if (this.enabled === null) {
+        //     throw new Error("Enabled must have a value");
+        // }
+        // if (this.schedulerType === null) {
+        //     throw new Error("schedulerType must have a value");
+        // }
     }
 }

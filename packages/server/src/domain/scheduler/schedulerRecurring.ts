@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import Configuration from "../configuration/configuration";
 import Ouput from "../ouput";
 import SchedulerBase from "./scheduler";
@@ -12,7 +13,7 @@ import Utils from "../../utils/utils";
 export default class SchedulerRecurring extends SchedulerBase {
     private readonly _configuration: Configuration;
     private readonly _ouputGenerator: OuputGenerator;
-    private readonly _timeCalculator: TimeCalculator;
+    private readonly _timeCalculator: TimeCalculator | null;
     private readonly _dateWeekCalculator: DateWeekCalculator;
     private readonly _dateMonthCalculator: IDateMonthCalculator;
 
@@ -34,6 +35,9 @@ export default class SchedulerRecurring extends SchedulerBase {
     }
 
     protected override getNextDateTimeProtected(): Date {
+        if (this._currentDate == null) {
+            throw Error('currentDate must have a value');
+        }
         let nextDate: Date = new Date(this._currentDate);
         if (this._configuration.dailyConfiguration != null) {
             if (this._timeCalculator != null) {
@@ -44,7 +48,7 @@ export default class SchedulerRecurring extends SchedulerBase {
                 }
             }
             else {
-                nextDate.setDate(nextDate.getDate() + this._configuration.dailyConfiguration.frecuency);
+                nextDate.setDate(nextDate.getDate() + this._configuration.dailyConfiguration.frecuency!);
             }
         }
         if (this._dateWeekCalculator != null) {

@@ -3,14 +3,14 @@ import Ouput from "./../ouput";
 
 export default abstract class Scheduler {
     protected readonly _limits: Limits;
-    protected _currentDate: Date;
+    protected _currentDate: Date | null;
     private readonly _enabled: boolean;
     constructor(enabled: boolean, limits: Limits) {
         this._enabled = enabled;
         this._limits = limits;
     }
 
-    getNextDateTime(currentDate: Date): Ouput {
+    getNextDateTime(currentDate: Date): Ouput | null {
         if (this._enabled === false) {
             return null;
         }

@@ -1,11 +1,11 @@
 export default abstract class TimeCalculator {
 
-    protected readonly _startTime: Date;
-    protected readonly _endTime: Date;
+    protected readonly _startTime: Date | null;
+    protected readonly _endTime: Date | null;
     protected readonly _frecuency: number;
     protected _isLastTime = false;;
 
-    constructor(startTime: Date, endTime: Date, frecuncy: number) {
+    constructor(startTime: Date | null, endTime: Date | null, frecuncy: number) {
         if (endTime != null && startTime != null && endTime < startTime) {
             throw new Error('endTime is not possible to be less than startTime');
         }
@@ -21,11 +21,11 @@ export default abstract class TimeCalculator {
     public nextTime(currentTime: Date): Date {
         let nextTime: Date = new Date(currentTime);
         this._isLastTime = false;
-        if (this.isLessThanStarTime(nextTime)) {
+        if (this._startTime != null && this.isLessThanStarTime(nextTime)) {
             nextTime.setHours(this._startTime.getHours(), this._startTime.getMinutes(), this._startTime.getSeconds());
             return nextTime;
         }
-        if (this.isGreaterThanEndTime(nextTime)) {
+        if (this._startTime != null && this.isGreaterThanEndTime(nextTime)) {
             this._isLastTime = true;
             nextTime.setDate(nextTime.getDate() + this._frecuency);
             nextTime.setHours(this._startTime.getHours(), this._startTime.getMinutes(), this._startTime.getSeconds());
@@ -33,7 +33,7 @@ export default abstract class TimeCalculator {
         }
 
         nextTime = this.nextTimeProtected(currentTime);
-        if (this.isGreaterThanEndTime(nextTime)) {
+        if (this._startTime != null && this.isGreaterThanEndTime(nextTime)) {
             this._isLastTime = true;
             nextTime.setDate(nextTime.getDate() + this._frecuency);
             nextTime.setHours(this._startTime.getHours(), this._startTime.getMinutes(), this._startTime.getSeconds());

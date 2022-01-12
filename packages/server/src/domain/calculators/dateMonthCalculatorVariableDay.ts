@@ -15,7 +15,7 @@ export default class DateMonthCalculatorVariableDay implements IDateMonthCalcula
         this._firstExecution = true;
     }
     nextDate(currentDate: Date): Date {
-        let nextDate: Date = new Date(currentDate);
+        let nextDate: Date | undefined = new Date(currentDate);
         let currentDateTemp: Date = new Date(currentDate);
         if (this._everyMonths > 0 && this._firstExecution === false) {
             nextDate = new Date(
@@ -32,6 +32,9 @@ export default class DateMonthCalculatorVariableDay implements IDateMonthCalcula
         const daysInMonth: number = Utils.getDaysInMonth(nextDate.getFullYear(), nextDate.getMonth());
 
         nextDate = this.getNextDateFromSteps(nextTempDate, daysInMonth);
+        if (nextDate == undefined) {
+            throw Error('nexDate must have a value');
+        }
 
         if (nextDate < currentDateTemp) {
             nextTempDate = new Date(nextDate);
@@ -41,6 +44,9 @@ export default class DateMonthCalculatorVariableDay implements IDateMonthCalcula
         }
 
         this._firstExecution = false;
+        if (nextDate == undefined) {
+            throw Error('nexDate must have a value');
+        }
         return nextDate;
     }
 
@@ -48,7 +54,7 @@ export default class DateMonthCalculatorVariableDay implements IDateMonthCalcula
         return this._firstExecution;
     }
 
-    private getNextDateFromSteps(nextTempDate: Date, daysInMonth: number) {
+    private getNextDateFromSteps(nextTempDate: Date, daysInMonth: number): Date | undefined {
         const stepsDays: Map<number, Date> = this.getStepsDays(daysInMonth, nextTempDate);
         return this._frecuencyVariableDay > 0
             ? stepsDays.get(this._frecuencyVariableDay)

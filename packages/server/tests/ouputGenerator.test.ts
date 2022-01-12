@@ -11,8 +11,8 @@ import OuputGenerator from "../src/domain/ouputGenerator";
 describe('ouput generator', () => {
   test('ouput generator generate correct description with the week and day configuration', () => {
     const startDate: Date = new Date(2020, 0, 1);
-    const starTime = new Date(null, null, null, 4);
-    const endTime = new Date(null, null, null, 18);
+    const starTime = new Date(0, 0, 0, 4);
+    const endTime = new Date(0, 0, 0, 18);
     const limits: Limits = new Limits(startDate, null);
     const week: Week = new Week();
     week.monday = true;
@@ -37,7 +37,7 @@ describe('ouput generator', () => {
     week.saturday = true;
     week.sunday = true;
     const weeklyConfiguration: WeeklyConfiguration = new WeeklyConfiguration(3, week);
-    const dailayConfiguration: DailyConfiguration = new DailyConfiguration(null, new Date(null, null, null, 14, 45, 12), null, null, null, null);
+    const dailayConfiguration: DailyConfiguration = new DailyConfiguration(null, new Date(0, 0, 0, 14, 45, 12), null, null, null, null);
     const configuration: Configuration = new Configuration('', SchedulerType.Recurring, true, Occurs.Weekly, null, limits, weeklyConfiguration, dailayConfiguration, null);
     const ouputGenerator: OuputGenerator = new OuputGenerator(configuration);
     expect(ouputGenerator.getOuput(new Date(2020, 4, 16)).description).toStrictEqual(

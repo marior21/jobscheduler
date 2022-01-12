@@ -1,9 +1,9 @@
 export default class Limits {
     private readonly _startDate: Date;
-    private readonly _endDate: Date;
+    private readonly _endDate: Date | null;
 
 
-    constructor(startDate: Date, endDate: Date) {
+    constructor(startDate: Date, endDate: Date | null) {
         this._startDate = startDate;
         this._endDate = endDate;
     }
@@ -12,7 +12,7 @@ export default class Limits {
         return this._startDate;
     }
 
-    get endDate(): Date {
+    get endDate(): Date | null {
         return this._endDate;
     }
 }

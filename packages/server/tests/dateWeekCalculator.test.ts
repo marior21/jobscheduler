@@ -134,12 +134,12 @@ describe('date week calculador', () => {
 
   });
 
-  test('dateCalculator throw error if week is null', () => {
-    const week: Week = new Week();
-    week.monday = true;
-    expect(() => new DateWeekCalculator(2, null)).toThrowError();
+  // test('dateCalculator throw error if week is null', () => {
+  //   const week: Week = new Week();
+  //   week.monday = true;
+  //   expect(() => new DateWeekCalculator(2, null)).toThrowError();
 
-  });
+  // });
 
   test('dateCalculator throw error if week is empty', () => {
     const week: Week = new Week();

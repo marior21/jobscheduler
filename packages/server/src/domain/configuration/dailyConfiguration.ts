@@ -1,14 +1,14 @@
 import { TimeUnit } from "../enums";
 
 export default class DailyConfiguration {
-    private readonly _occursEveryNumber: number;
-    private readonly _startTime: Date;
-    private readonly _endTime: Date;
-    private readonly _timeUnit: TimeUnit;
-    private readonly _occurOnceTime: Date;
-    private readonly _frecuency:number
+    private readonly _occursEveryNumber: number | null;
+    private readonly _startTime: Date | null;
+    private readonly _endTime: Date | null;
+    private readonly _timeUnit: TimeUnit | null;
+    private readonly _occurOnceTime: Date | null;
+    private readonly _frecuency: number | null
 
-    constructor(frecuency:number, occurOnceTime:Date, timeUnit: TimeUnit, occursEveryNumber: number, startTime: Date, endTime: Date) {      
+    constructor(frecuency: number | null, occurOnceTime: Date | null, timeUnit: TimeUnit | null, occursEveryNumber: number | null, startTime: Date | null, endTime: Date | null) {
         if (endTime != null && startTime != null && endTime < startTime) {
             throw new Error('endTime is not possible to be less than startTime');
         }
@@ -20,27 +20,27 @@ export default class DailyConfiguration {
         this._timeUnit = timeUnit;
     }
 
-    get startTime(): Date {
+    get startTime(): Date | null {
         return this._startTime;
     }
 
-    get endTime(): Date {
+    get endTime(): Date | null {
         return this._endTime;
     }
 
-    get occursEveryNumber(): number {
+    get occursEveryNumber(): number | null {
         return this._occursEveryNumber;
     }
 
-    get timeUnit(): TimeUnit {
+    get timeUnit(): TimeUnit | null {
         return this._timeUnit;
     }
 
-    get occursOnceTime(): Date {
+    get occursOnceTime(): Date | null {
         return this._occurOnceTime;
-    } 
+    }
 
-    get frecuency(): number {
+    get frecuency(): number | null {
         return this._frecuency;
     }
 }

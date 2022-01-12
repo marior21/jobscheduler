@@ -23,9 +23,10 @@
     "clean": "rimraf coverage build tmp",
     "prebuild": "npm run lint",
     "build": "tsc -p tsconfig.release.json",
+    "build-all": "tsc -p tsconfig.json",
     "build:watch": "tsc -w -p tsconfig.release.json",
     "lint": "eslint . --ext .ts,.tsx",
-    "test": "jest --coverage",
+    "test": "jest --coverage --detectOpenHandles",
     "test-m": "jest -i cheduler.monthly.test",
     "test:watch": "jest --watch"
   },

@@ -1,7 +1,11 @@
 import { Culture } from "./enums"
 
 export default function getConfiguracion(culture: Culture): LocaleConfiguration {
-    return configurations.find(c => c.culture = culture);
+    const configuration = configurations.find(c => c.culture = culture);
+    if (configuration) {
+        return configuration;
+    }
+    throw Error('configuración no encontrada');
 }
 
 type Text = { [code: string]: string };

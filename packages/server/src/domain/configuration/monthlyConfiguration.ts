@@ -2,17 +2,17 @@ import { VariableDayNumber, MonthlyFrecuencyType, VariableDayType } from "../enu
 
 export default class MonthlyConfiguration {
     private readonly _frecuencyType: MonthlyFrecuencyType;
-    private readonly _day: number;
-    private readonly _everyMonths: number;
-    private readonly _frecuencyVariableDay: VariableDayNumber;
-    private readonly _variableDayType: VariableDayType;
+    private readonly _day: number | null;
+    private readonly _everyMonths: number | null;
+    private readonly _frecuencyVariableDay: VariableDayNumber | null;
+    private readonly _variableDayType: VariableDayType | null;
 
     constructor(
         frecuencyType: MonthlyFrecuencyType,
-        day: number,
-        everyMonths: number,
-        frecuencyVariableDay: VariableDayNumber,
-        variableDayType: VariableDayType) {
+        day: number | null,
+        everyMonths: number | null,
+        frecuencyVariableDay: VariableDayNumber | null,
+        variableDayType: VariableDayType | null) {
 
         this._frecuencyType = frecuencyType;
         this._day = day;
@@ -26,26 +26,26 @@ export default class MonthlyConfiguration {
         return this._frecuencyType;
     }
 
-    get day(): number {
+    get day(): number | null {
         return this._day;
     }
 
-    get everyMonths(): number {
+    get everyMonths(): number | null {
         return this._everyMonths;
     }
 
-    get frecuencyVariableDay(): VariableDayNumber {
+    get frecuencyVariableDay(): VariableDayNumber | null {
         return this._frecuencyVariableDay;
     }
 
-    get variableDayType(): VariableDayType {
+    get variableDayType(): VariableDayType | null {
         return this._variableDayType;
     }
 
     validateArguments(): void {
-        if (this.frecuencyType == null) {
-            throw new Error('frecuencyType must have a value')
-        }
+        // if (this.frecuencyType == null) {
+        //     throw new Error('frecuencyType must have a value')
+        // }
 
         if (this.frecuencyType === MonthlyFrecuencyType.exactDay) {
             if (this.day == null || this.day === 0) {
