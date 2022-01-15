@@ -11,11 +11,6 @@ import IDateMonthCalculator from "../calculators/iDateMonthCalculator";
 import Utils from "../../utils/utils";
 import CultureManager from "../..//localization/cultureManager";
 
-// type ReturnDailyDates = {
-//     nextDate: Date,
-//     returnDate: Date | null
-// }
-
 export default class SchedulerRecurring extends SchedulerBase {
     private readonly _configuration: Configuration;
     private readonly _ouputGenerator: OuputGenerator;
@@ -45,10 +40,7 @@ export default class SchedulerRecurring extends SchedulerBase {
             throw Error(CultureManager.getString('CurrentDateValidation'));
         }
         let nextDate: Date = new Date(this._currentDate);
-        // const returnDates = this.getDailyNextDate(nextDate);
-        // if (returnDates.returnDate != null) {
-        //     return returnDates.returnDate;
-        // }
+
         if (this._configuration.dailyConfiguration != null) {
             if (this._timeCalculator != null) {
                 nextDate = this._timeCalculator.nextTime(nextDate);
@@ -75,22 +67,6 @@ export default class SchedulerRecurring extends SchedulerBase {
         }
         return nextDate;
     }
-
-    // private getDailyNextDate(nextDate: Date): ReturnDailyDates {
-    //     if (this._configuration.dailyConfiguration != null) {
-    //         if (this._timeCalculator != null) {
-    //             nextDate = this._timeCalculator.nextTime(nextDate);
-    //             if (this._timeCalculator.isLastTime === false &&
-    //                 (this._dateMonthCalculator == null || this._dateMonthCalculator.firstExecution == false)) {
-    //                 return { nextDate, returnDate: nextDate };
-    //             }
-    //         }
-    //         else {
-    //             nextDate.setDate(nextDate.getDate() + this._configuration.dailyConfiguration.frecuency!);
-    //         }
-    //     }
-    //     return { nextDate, returnDate: null };
-    // }
 
     protected override getOuput(nextDate: Date): Ouput {
         return this._ouputGenerator.getOuput(nextDate);
