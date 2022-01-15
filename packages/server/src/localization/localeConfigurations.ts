@@ -51,7 +51,12 @@ const configurationEnUS: LocaleConfiguration = {
         'DayWeekOverflow': 'Day week overflow',
         'StartDateGreaterCurrentDate': 'startDate is greater than current date. Verify the limits',
         'EndDateLessCurrentDate': 'endDate is less than startDate. Verify the limits',
-        'CurrentDateValidation': 'currentDate must have a value'
+        'CurrentDateValidation': 'currentDate must have a value',
+        'MonthlyFrecuencyTypeValidation': 'is not a MonthlyFrecuencyType supported',
+        'NextDateMustHaveValue': 'nexDate must have a value',
+        'WeekConfigNotEmpty': 'weekConfig should not be empty',
+        'NumberWeeksGraterZero': 'The number of weeks should be grater or igual than zero',
+        'TimeUnitNotSupported': 'is not a TimeUnit supported'
     }
 };
 

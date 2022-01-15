@@ -4,6 +4,7 @@ import { MonthlyFrecuencyType } from "../enums";
 import IDateMonthCalculator from "./iDateMonthCalculator";
 import DateMonthCalculatorDay from "./dateMonthCalculatorDay";
 import DateMonthCalculatorVariableDay from "./dateMonthCalculatorVariableDay";
+import CultureManager from "../../localization/cultureManager";
 
 export default class DateMonthCalculatorFactory {
     public static create(monthlyConfiguration: MonthlyConfiguration): IDateMonthCalculator {
@@ -13,7 +14,7 @@ export default class DateMonthCalculatorFactory {
             case MonthlyFrecuencyType.variableDay:
                 return new DateMonthCalculatorVariableDay(monthlyConfiguration.variableDayType!, monthlyConfiguration.frecuencyVariableDay!, monthlyConfiguration.everyMonths!);
             default:
-                throw new Error(`${monthlyConfiguration.frecuencyType} is not a MonthlyFrecuencyType supported`);
+                throw new Error(`${monthlyConfiguration.frecuencyType} ${CultureManager.getString('MonthlyFrecuencyTypeValidation')}`);
         }
     }
 }

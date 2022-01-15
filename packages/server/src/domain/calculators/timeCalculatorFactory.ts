@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
+import CultureManager from "../../localization/cultureManager";
 import DailyConfiguration from "../configuration/dailyConfiguration";
 import { TimeUnit } from "../enums";
 import TimeCalculator from "./timeCalculator";
@@ -26,7 +27,7 @@ export default class TimeCalculatorFactory {
             case TimeUnit.Seconds:
                 return new TimeCalculatorSecond(occursEveryNumber!, startTime!, endTime!, frecuency!);
             default:
-                throw new Error(`${timeUnit} is not a TimeUnit supported`);
+                throw new Error(`${timeUnit} ${CultureManager.getString('TimeUnitNotSupported')}`);
         }
     }
 }

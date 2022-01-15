@@ -1,3 +1,4 @@
+import CultureManager from "../../localization/cultureManager";
 import Utils from "../../utils/utils";
 import Week from "../configuration/week";
 
@@ -13,10 +14,10 @@ export default class DateWeekCalculator {
     }
     private validateArguments(numberWeeks: number, weekConfig: Week) {
         if (numberWeeks < 0) {
-            throw new Error("The number of weeks should be grater or igual than zero");
+            throw new Error(CultureManager.getString('NumberWeeksGraterZero'));
         }
         if (weekConfig.isEmpty()) {
-            throw new Error("weekConfig should not be empty");
+            throw new Error(CultureManager.getString('WeekConfigNotEmpty'));
         }
     }
 

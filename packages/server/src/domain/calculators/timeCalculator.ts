@@ -1,3 +1,5 @@
+import CultureManager from "../../localization/cultureManager";
+
 export default abstract class TimeCalculator {
 
     protected readonly _startTime: Date | null;
@@ -7,7 +9,7 @@ export default abstract class TimeCalculator {
 
     constructor(startTime: Date | null, endTime: Date | null, frecuncy: number) {
         if (endTime != null && startTime != null && endTime < startTime) {
-            throw new Error('endTime is not possible to be less than startTime');
+            throw new Error(CultureManager.getString('EndTimeNotLessStartTime'));
         }
         this._startTime = startTime;
         this._endTime = endTime;

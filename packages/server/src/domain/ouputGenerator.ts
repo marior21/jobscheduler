@@ -17,15 +17,28 @@ export default class OuputGenerator {
     public getOuput(nextDate: Date): Ouput {
         let when = '';
         const getString = (text: string) => CultureManager.getString(text);
-        if (this._configuration.occurs === Occurs.Daily) {
-            when = this._configuration.dailyConfiguration?.frecuency === 1
-                ? `${getString('every')} ${getString('day')}`
-                : `${getString('each')} ${this._configuration.dailyConfiguration?.frecuency} ${getString('days')}`;
+        when = this.getDailyOuput(when, getString);
+        when = this.getWeeklyOuput(when, getString);
+        when = this.getMonthlyOuput(when, getString);
+        when = this.getGeneralDailyOuput(when, getString);
+        const description = `${getString('Occurs')} ${when} ${getString('starting')} ${getString('on')} ${Utils.formatDate(this._configuration.limits.startDate, CultureManager.getCurrentCulture())}`;
+        return new Ouput(description, nextDate);
+    }
 
+    private getGeneralDailyOuput(when: string, getString: (text: string) => string) {
+        if (this._configuration.dailyConfiguration?.occursOnceTime != null) {
+            when += ` ${getString('at')} ${Utils.formatTime(this._configuration.dailyConfiguration.occursOnceTime, CultureManager.getCurrentCulture())}`;
         }
-        if (this._configuration.occurs == Occurs.Weekly) {
-            when = `${getString('every')} ${this._configuration.weeklyConfiguration?.numberWeeks} ${getString('weeks')} ${getString('on')} ${this._configuration.weeklyConfiguration?.weekConfig.getDescription()}`;
+        if (this._configuration.dailyConfiguration?.occursEveryNumber != null) {
+            const dailyConf = this._configuration.dailyConfiguration;
+            const startTime = Utils.formatTime(dailyConf.startTime!, CultureManager.getCurrentCulture());
+            const endTime = Utils.formatTime(dailyConf.endTime!, CultureManager.getCurrentCulture());
+            when += ` ${getString('every')} ${dailyConf.occursEveryNumber} ${TimeUnit[dailyConf.timeUnit!]} between ${startTime} and ${endTime}`;
         }
+        return when;
+    }
+
+    private getMonthlyOuput(when: string, getString: (text: string) => string) {
         if (this._configuration.occurs == Occurs.Monthly) {
             const { frecuencyType, day, frecuencyVariableDay, variableDayType, everyMonths } = this._configuration.monthlyConfiguration!;
             when = frecuencyType === MonthlyFrecuencyType.variableDay
@@ -33,16 +46,23 @@ export default class OuputGenerator {
                 : `${getString('the')} ${getString('day')} ${day}`;
             when += ` ${getString('of')} ${getString('every')} ${everyMonths} ${getString('months')}`;
         }
-        if (this._configuration.dailyConfiguration?.occursOnceTime != null) {
-            when += ` ${getString('at')} ${Utils.formatTime(this._configuration.dailyConfiguration.occursOnceTime)}`
+        return when;
+    }
+
+    private getWeeklyOuput(when: string, getString: (text: string) => string) {
+        if (this._configuration.occurs == Occurs.Weekly) {
+            when = `${getString('every')} ${this._configuration.weeklyConfiguration!.numberWeeks} ${getString('weeks')} ${getString('on')} ${this._configuration.weeklyConfiguration!.weekConfig.getDescription()}`;
         }
-        if (this._configuration.dailyConfiguration?.occursEveryNumber != null) {
-            const dailyConf = this._configuration.dailyConfiguration;
-            const startTime = Utils.formatTime(dailyConf.startTime!);
-            const endTime = Utils.formatTime(dailyConf.endTime!);
-            when += ` ${getString('every')} ${dailyConf.occursEveryNumber} ${TimeUnit[dailyConf.timeUnit!]} between ${startTime} and ${endTime}`;
+        return when;
+    }
+
+    private getDailyOuput(when: string, getString: (text: string) => string) {
+        if (this._configuration.occurs === Occurs.Daily) {
+            when = this._configuration.dailyConfiguration!.frecuency === 1
+                ? `${getString('every')} ${getString('day')}`
+                : `${getString('each')} ${this._configuration.dailyConfiguration!.frecuency} ${getString('days')}`;
+
         }
-        const description = `${getString('Occurs')} ${when} ${getString('starting')} ${getString('on')} ${Utils.formatDate(this._configuration.limits.startDate)}`;
-        return new Ouput(description, nextDate);
+        return when;
     }
 }

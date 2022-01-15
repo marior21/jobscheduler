@@ -1,3 +1,4 @@
+import CultureManager from "../../localization/cultureManager";
 import Utils from "../../utils/utils";
 import { VariableDayNumber, VariableDayType } from "../enums";
 import IDateMonthCalculator from "./iDateMonthCalculator";
@@ -33,7 +34,7 @@ export default class DateMonthCalculatorVariableDay implements IDateMonthCalcula
 
         nextDate = this.getNextDateFromSteps(nextTempDate, daysInMonth);
         if (nextDate == undefined) {
-            throw Error('nexDate must have a value');
+            throw Error(CultureManager.getString('NextDateMustHaveValue'));
         }
 
         if (nextDate < currentDateTemp) {
@@ -45,7 +46,7 @@ export default class DateMonthCalculatorVariableDay implements IDateMonthCalcula
 
         this._firstExecution = false;
         if (nextDate == undefined) {
-            throw Error('nexDate must have a value');
+            throw Error(CultureManager.getString('NextDateMustHaveValue'));
         }
         return nextDate;
     }

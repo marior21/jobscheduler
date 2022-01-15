@@ -17,10 +17,10 @@ export default class SchedulerOnce extends SchedulerBase {
     }
 
     protected override getOuput(date: Date): Ouput {
-        const dateOnce: string = Utils.formatDate(date);
-        const timeOnce: string = Utils.formatTime(date);
+        const dateOnce: string = Utils.formatDate(date, CultureManager.getCurrentCulture());
+        const timeOnce: string = Utils.formatTime(date, CultureManager.getCurrentCulture());
         const description =
-            `${CultureManager.getString('OccursOnce')}. ${CultureManager.getString('ScheduleOnce')} ${dateOnce} ${CultureManager.getString('at')} ${timeOnce} ${CultureManager.getString('starting')} ${CultureManager.getString('on')} ${Utils.formatDate(this._limits.startDate)}`;
+            `${CultureManager.getString('OccursOnce')}. ${CultureManager.getString('ScheduleOnce')} ${dateOnce} ${CultureManager.getString('at')} ${timeOnce} ${CultureManager.getString('starting')} ${CultureManager.getString('on')} ${Utils.formatDate(this._limits.startDate, CultureManager.getCurrentCulture())}`;
 
         return new Ouput(description, date);
     }
