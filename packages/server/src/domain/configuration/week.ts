@@ -1,3 +1,5 @@
+import CultureManager from "../..//localization/cultureManager";
+
 export default class Week {
     public monday = false;
     public tuesday = false;
@@ -16,7 +18,7 @@ export default class Week {
             case Week.FRIDAY: return this.friday;
             case Week.SATURDAY: return this.saturday;
             case Week.SUNDAY: return this.sunday;
-            default: throw new Error("Day week overflow");
+            default: throw new Error(CultureManager.getString('DayWeekOverflow'));
         }
     }
 
@@ -33,7 +35,7 @@ export default class Week {
     public getDescription(): string {
         const arrayKeys = Object.keys(this).filter(day => this[day]);
         const lastKey = arrayKeys.pop();
-        return `${arrayKeys.join(', ')} and ${lastKey}`;
+        return `${arrayKeys.join(', ')} ${CultureManager.getString('and')} ${lastKey}`;
     }
 
     public static readonly MONDAY = 1;

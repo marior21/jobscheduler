@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import CultureManager from "../..//localization/cultureManager";
 import { Occurs, SchedulerType } from "../enums";
 import DailyConfiguration from "./dailyConfiguration";
 import Limits from "./limits";
@@ -46,38 +47,37 @@ export default class Configuration {
         return new Configuration(user, schedulerType, enabled, occurs, onceDate, new Limits(startLimitDate, null), null, null, null);
     }
 
-    get user(): string {
+    public get user(): string {
         return this._user;
     }
 
-    get schedulerType(): SchedulerType {
+    public get schedulerType(): SchedulerType {
         return this._schedulerType;
     }
 
-    get ocurrs(): Occurs | null {
+    public get occurs(): Occurs | null {
         return this._occurs;
     }
 
-    get limits(): Limits {
+    public get limits(): Limits {
         return this._limits;
     }
 
-    get enabled(): boolean {
+    public get enabled(): boolean {
         return this._enabled;
     }
 
-    get oncedate(): Date | null {
+    public get oncedate(): Date | null {
         return this._onceDate;
     }
 
-    get weeklyConfiguration(): WeeklyConfiguration | null {
+    public get weeklyConfiguration(): WeeklyConfiguration | null {
         return this._weeklyConfiguration;
     }
 
-    get dailyConfiguration(): DailyConfiguration | null {
+    public get dailyConfiguration(): DailyConfiguration | null {
         return this._dailyConfiguration;
     }
-
 
     public get monthlyConfiguration(): MonthlyConfiguration | null {
         return this._monthlyConfiguration;
@@ -85,30 +85,21 @@ export default class Configuration {
 
     validateArguments(): void {
         if (this.schedulerType === SchedulerType.Once && this.oncedate == null) {
-            throw new Error("Oncedate must have a value");
+            throw new Error(CultureManager.getString('OncedateValidation'));
         }
         if (this.schedulerType === SchedulerType.Recurring) {
             if (this._occurs === null) {
-                throw new Error("Ocurrs must have a value");
+                throw new Error(CultureManager.getString('OccursValidation'));
             }
-            if (this.ocurrs === Occurs.Weekly && this.weeklyConfiguration == null) {
-                throw new Error("WeeklyConfiguration must have a value");
+            if (this.occurs === Occurs.Weekly && this.weeklyConfiguration == null) {
+                throw new Error(CultureManager.getString('WeeklyConfigurationValidation'));
             }
-            if (this.ocurrs === Occurs.Daily && this.dailyConfiguration == null) {
-                throw new Error("DailyConfiguration must have a value");
+            if (this.occurs === Occurs.Daily && this.dailyConfiguration == null) {
+                throw new Error(CultureManager.getString('DailyConfigurationValidation'));
             }
-            if (this.ocurrs === Occurs.Monthly && this.monthlyConfiguration == null) {
-                throw new Error("MonthlyConfiguration must have a value");
+            if (this.occurs === Occurs.Monthly && this.monthlyConfiguration == null) {
+                throw new Error(CultureManager.getString('MonthlyConfigurationValidation'));
             }
         }
-        // if (this.limits === null) {
-        //     throw new Error("Limits must have a value");
-        // }
-        // if (this.enabled === null) {
-        //     throw new Error("Enabled must have a value");
-        // }
-        // if (this.schedulerType === null) {
-        //     throw new Error("schedulerType must have a value");
-        // }
     }
 }

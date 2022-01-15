@@ -23,7 +23,7 @@ describe('ouput generator', () => {
     const configuration: Configuration = new Configuration('', SchedulerType.Recurring, true, Occurs.Weekly, null, limits, weeklyConfiguration, dailayConfiguration, null);
     const ouputGenerator: OuputGenerator = new OuputGenerator(configuration);
     expect(ouputGenerator.getOuput(new Date(2020, 4, 16)).description).toStrictEqual(
-      'Ocurrs every 3 weeks on monday, tuesday and saturday every 2 Hours between 04:00:00 and 18:00:00 starting on 01/01/2020'
+      'Occurs every 3 weeks on monday, tuesday and saturday every 2 Hours between 04:00:00 and 18:00:00 starting on 01/01/2020'
     );
   });
 
@@ -41,7 +41,7 @@ describe('ouput generator', () => {
     const configuration: Configuration = new Configuration('', SchedulerType.Recurring, true, Occurs.Weekly, null, limits, weeklyConfiguration, dailayConfiguration, null);
     const ouputGenerator: OuputGenerator = new OuputGenerator(configuration);
     expect(ouputGenerator.getOuput(new Date(2020, 4, 16)).description).toStrictEqual(
-      'Ocurrs every 3 weeks on monday, tuesday, saturday and sunday at 14:45:12 starting on 01/01/2020'
+      'Occurs every 3 weeks on monday, tuesday, saturday and sunday at 14:45:12 starting on 01/01/2020'
     );
   });
 
@@ -52,7 +52,7 @@ describe('ouput generator', () => {
     const configuration: Configuration = new Configuration('', SchedulerType.Recurring, true, Occurs.Daily, null, limits, null, dailayConfiguration, null);
     const ouputGenerator: OuputGenerator = new OuputGenerator(configuration);
     expect(ouputGenerator.getOuput(new Date(2020, 4, 16)).description).toStrictEqual(
-      'Ocurrs every day starting on 01/01/2020'
+      'Occurs every day starting on 01/01/2020'
     );
   });
 
@@ -63,7 +63,7 @@ describe('ouput generator', () => {
     const configuration: Configuration = new Configuration('', SchedulerType.Recurring, true, Occurs.Daily, null, limits, null, dailayConfiguration, null);
     const ouputGenerator: OuputGenerator = new OuputGenerator(configuration);
     expect(ouputGenerator.getOuput(new Date(2020, 4, 16)).description).toStrictEqual(
-      'Ocurrs each 4 days starting on 01/01/2020'
+      'Occurs each 4 days starting on 01/01/2020'
     );
   });
 
@@ -74,7 +74,7 @@ describe('ouput generator', () => {
     const configuration: Configuration = new Configuration('', SchedulerType.Recurring, true, Occurs.Monthly, null, limits, null, null, monthlyConfiguration);
     const ouputGenerator: OuputGenerator = new OuputGenerator(configuration);
     expect(ouputGenerator.getOuput(new Date(2020, 4, 16)).description).toStrictEqual(
-      'Ocurrs the day 5 of every 3 months starting on 01/01/2020'
+      'Occurs the day 5 of every 3 months starting on 01/01/2020'
     );
   });
 });

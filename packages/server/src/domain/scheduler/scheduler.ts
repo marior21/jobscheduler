@@ -1,3 +1,4 @@
+import CultureManager from "../..//localization/cultureManager";
 import Limits from "./../configuration/limits";
 import Ouput from "./../ouput";
 
@@ -16,10 +17,10 @@ export default abstract class Scheduler {
         }
         this._currentDate = currentDate;
         if (this._limits.startDate != null && this._limits.startDate > currentDate) {
-            throw new Error('currentDate is greater than than startDate. Verify the limits');
+            throw new Error(CultureManager.getString('StartDateGreaterCurrentDate'));
         }
         if (this._limits.endDate != null && this._limits.endDate < currentDate) {
-            throw new Error('currentDate is less than than startDate. Verify the limits');
+            throw new Error(CultureManager.getString('EndDateLessCurrentDate'));
         }
         const nextDate = this.getNextDateTimeProtected();
         this._currentDate = null;

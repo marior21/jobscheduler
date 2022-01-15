@@ -1,3 +1,4 @@
+import CultureManager from "../../localization/cultureManager";
 import { TimeUnit } from "../enums";
 
 export default class DailyConfiguration {
@@ -6,11 +7,16 @@ export default class DailyConfiguration {
     private readonly _endTime: Date | null;
     private readonly _timeUnit: TimeUnit | null;
     private readonly _occurOnceTime: Date | null;
-    private readonly _frecuency: number | null
+    private readonly _frecuency: number | null;
 
-    constructor(frecuency: number | null, occurOnceTime: Date | null, timeUnit: TimeUnit | null, occursEveryNumber: number | null, startTime: Date | null, endTime: Date | null) {
+    constructor(frecuency: number | null,
+        occurOnceTime: Date | null,
+        timeUnit: TimeUnit | null,
+        occursEveryNumber: number | null,
+        startTime: Date | null,
+        endTime: Date | null) {
         if (endTime != null && startTime != null && endTime < startTime) {
-            throw new Error('endTime is not possible to be less than startTime');
+            throw new Error(CultureManager.getString('EndTimeNotLessStartTime'));
         }
         this._frecuency = frecuency;
         this._occurOnceTime = occurOnceTime;
@@ -18,6 +24,7 @@ export default class DailyConfiguration {
         this._endTime = endTime;
         this._occursEveryNumber = occursEveryNumber;
         this._timeUnit = timeUnit;
+
     }
 
     get startTime(): Date | null {

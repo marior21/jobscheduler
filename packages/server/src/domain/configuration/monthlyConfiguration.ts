@@ -1,3 +1,4 @@
+import CultureManager from "../..//localization/cultureManager";
 import { VariableDayNumber, MonthlyFrecuencyType, VariableDayType } from "../enums";
 
 export default class MonthlyConfiguration {
@@ -43,30 +44,26 @@ export default class MonthlyConfiguration {
     }
 
     validateArguments(): void {
-        // if (this.frecuencyType == null) {
-        //     throw new Error('frecuencyType must have a value')
-        // }
-
         if (this.frecuencyType === MonthlyFrecuencyType.exactDay) {
             if (this.day == null || this.day === 0) {
-                throw new Error('day must have a value in MonthlyFrecuencyType.excatDay');
+                throw new Error(CultureManager.getString('ExactDayMustHaveValue'));
             }
 
             if (this.day > 31) {
-                throw new Error('day value incorrect in MonthlyFrecuencyType.excatDay');
+                throw new Error(CultureManager.getString('ExactDayIncorrect'));
             }
         }
 
         if (this.frecuencyType === MonthlyFrecuencyType.variableDay) {
             if (this.frecuencyVariableDay == null) {
-                throw new Error('frecuencyVariableDay must have a value');
+                throw new Error(CultureManager.getString('FrecuencyVariableDayValidation'));
             }
             if (this.variableDayType == null) {
-                throw new Error('variableDayType must have a value');
+                throw new Error(CultureManager.getString('VariableDayTypeValidation'));
             }
         }
         if (this.everyMonths == null || this.everyMonths == 0) {
-            throw new Error('everyMonths mut have a value');
+            throw new Error(CultureManager.getString('EveryMonthsValidation'));
         }
     }
 }

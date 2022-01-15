@@ -2,6 +2,7 @@ import Limits from "../configuration/limits";
 import Ouput from "../ouput";
 import SchedulerBase from "./scheduler";
 import Utils from "../../utils/utils";
+import CultureManager from "../..//localization/cultureManager";
 
 
 export default class SchedulerOnce extends SchedulerBase {
@@ -19,7 +20,7 @@ export default class SchedulerOnce extends SchedulerBase {
         const dateOnce: string = Utils.formatDate(date);
         const timeOnce: string = Utils.formatTime(date);
         const description =
-            `Ocurrs once. Shedule will be used on ${dateOnce} at ${timeOnce} starting on ${Utils.formatDate(this._limits.startDate)}`;
+            `${CultureManager.getString('OccursOnce')}. ${CultureManager.getString('ScheduleOnce')} ${dateOnce} ${CultureManager.getString('at')} ${timeOnce} ${CultureManager.getString('starting')} ${CultureManager.getString('on')} ${Utils.formatDate(this._limits.startDate)}`;
 
         return new Ouput(description, date);
     }

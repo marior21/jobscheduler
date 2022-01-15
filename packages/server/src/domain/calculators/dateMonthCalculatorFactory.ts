@@ -7,9 +7,6 @@ import DateMonthCalculatorVariableDay from "./dateMonthCalculatorVariableDay";
 
 export default class DateMonthCalculatorFactory {
     public static create(monthlyConfiguration: MonthlyConfiguration): IDateMonthCalculator {
-        // if (monthlyConfiguration == null) {
-        //     throw Error('monthlyConfiguration argument is required');
-        // }
         switch (monthlyConfiguration.frecuencyType) {
             case MonthlyFrecuencyType.exactDay:
                 return new DateMonthCalculatorDay(monthlyConfiguration.day!, monthlyConfiguration.everyMonths!);

@@ -63,11 +63,11 @@ export default class DateMonthCalculatorVariableDay implements IDateMonthCalcula
 
     private getStepsDays(daysInMonth: number, nextTempDate: Date): Map<number, Date> {
         const dictionaryDays = new Map();
-        let numberOcurrsDay = 0;
+        let numberOccursDay = 0;
         for (let index = 1; index <= daysInMonth; index++) {
             if (DateMonthCalculatorVariableDay.isDayVariableDayType(nextTempDate, this._variableDayType)) {
-                numberOcurrsDay++;
-                dictionaryDays.set(numberOcurrsDay, new Date(nextTempDate));
+                numberOccursDay++;
+                dictionaryDays.set(numberOccursDay, new Date(nextTempDate));
             }
             nextTempDate.setDate(nextTempDate.getDate() + 1);
         }

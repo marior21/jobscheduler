@@ -134,6 +134,7 @@ describe('date week calculador', () => {
 
   });
 
+  // eslint-disable-next-line jest/no-commented-out-tests
   // test('dateCalculator throw error if week is null', () => {
   //   const week: Week = new Week();
   //   week.monday = true;

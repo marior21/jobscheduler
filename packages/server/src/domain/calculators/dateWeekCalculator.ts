@@ -15,9 +15,6 @@ export default class DateWeekCalculator {
         if (numberWeeks < 0) {
             throw new Error("The number of weeks should be grater or igual than zero");
         }
-        // if (weekConfig == null) {
-        //     throw new Error("weekConfig is required");
-        // }
         if (weekConfig.isEmpty()) {
             throw new Error("weekConfig should not be empty");
         }

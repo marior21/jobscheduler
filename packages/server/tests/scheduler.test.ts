@@ -21,11 +21,11 @@ function getOnceScheduler(enabled: boolean): Scheduler {
 };
 
 
-function getRecurringScheduler(enabled: boolean, ocurrs: Occurs, limits: Limits): Scheduler {
+function getRecurringScheduler(enabled: boolean, occurs: Occurs, limits: Limits): Scheduler {
   const startDate: Date = new Date(2020, 0, 1);
   const limitsArg: Limits = limits != null ? limits : new Limits(startDate, null);
   const dailayConfiguration: DailyConfiguration = new DailyConfiguration(1, null, null, null, null, null);
-  const configuration: Configuration = new Configuration('', SchedulerType.Recurring, enabled, ocurrs, currentDate, limitsArg, null, dailayConfiguration, null);
+  const configuration: Configuration = new Configuration('', SchedulerType.Recurring, enabled, occurs, currentDate, limitsArg, null, dailayConfiguration, null);
 
   return SchedulerFactory.create(configuration);
 };
@@ -34,7 +34,7 @@ describe('scheduler once', () => {
   test('next date in once date mode in scheduler enabled return once date', () => {
     const scheduler: Scheduler = getOnceScheduler(true);
     const ouput: Ouput | null = scheduler.getNextDateTime(currentDate);
-    expect(ouput?.description).toEqual('Ocurrs once. Shedule will be used on 08/01/2020 at 14:00:00 starting on 01/01/2020');
+    expect(ouput?.description).toEqual('Occurs once. Schedule will be used on 08/01/2020 at 14:00:00 starting on 01/01/2020');
     expect(ouput?.nextDate).toBe(onceDate);
   });
 
@@ -59,7 +59,7 @@ describe('scheduler recurring', () => {
     const ouput: Ouput | null = scheduler.getNextDateTime(currentDate);
 
     const dateExpected = new Date(2020, 0, 5);
-    expect(ouput?.description).toEqual('Ocurrs every day starting on 01/01/2020');
+    expect(ouput?.description).toEqual('Occurs every day starting on 01/01/2020');
     expect(ouput?.nextDate).toStrictEqual(dateExpected);
   });
 
