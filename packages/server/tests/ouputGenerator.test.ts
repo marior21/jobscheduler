@@ -25,7 +25,7 @@ describe('ouput generator en-gb', () => {
     const configuration: Configuration = new Configuration('', SchedulerType.Recurring, true, Occurs.Weekly, null, limits, weeklyConfiguration, dailayConfiguration, null);
     const ouputGenerator: OuputGenerator = new OuputGenerator(configuration);
     expect(ouputGenerator.getOuput(new Date(2020, 4, 16)).description).toStrictEqual(
-      'Occurs every 3 weeks on monday, tuesday and saturday every 2 Hours between 04:00:00 and 18:00:00 starting on 23/01/2020'
+      'Occurs every 3 weeks on monday, tuesday and saturday every 2 hours between 04:00:00 and 18:00:00 starting on 23/01/2020'
     );
   });
 
@@ -98,7 +98,7 @@ describe('ouput generator en-us', () => {
     const ouputGenerator: OuputGenerator = new OuputGenerator(configuration);
 
     expect(ouputGenerator.getOuput(new Date(2020, 4, 16)).description).toStrictEqual(
-      'Occurs every 3 weeks on monday, tuesday and saturday every 2 Hours between 04:00:00 and 18:00:00 starting on 01/23/2020'
+      'Occurs every 3 weeks on monday, tuesday and saturday every 2 hours between 04:00:00 AM and 06:00:00 PM starting on 01/23/2020'
     );
     CultureManager.setCurrentCulture(Culture.En_GB);
   });
@@ -121,7 +121,7 @@ describe('ouput generator es-es', () => {
     const ouputGenerator: OuputGenerator = new OuputGenerator(configuration);
 
     expect(ouputGenerator.getOuput(new Date(2020, 4, 16)).description).toStrictEqual(
-      'Occurs every 3 weeks on monday, tuesday and saturday every 2 Hours between 04:00:00 and 18:00:00 starting on 23/01/2020'
+      'Ocurre cada 3 semanas en lunes, martes y sábado cada 2 horas entre 04:00:00 y 18:00:00 empezando en 23/01/2020'
     );
     CultureManager.setCurrentCulture(Culture.En_GB);
   });

@@ -33,7 +33,7 @@ export default class OuputGenerator {
             const dailyConf = this._configuration.dailyConfiguration;
             const startTime = Utils.formatTime(dailyConf.startTime!, CultureManager.getCurrentCulture());
             const endTime = Utils.formatTime(dailyConf.endTime!, CultureManager.getCurrentCulture());
-            when += ` ${getString('every')} ${dailyConf.occursEveryNumber} ${TimeUnit[dailyConf.timeUnit!]} between ${startTime} and ${endTime}`;
+            when += ` ${getString('every')} ${dailyConf.occursEveryNumber} ${getString(TimeUnit[dailyConf.timeUnit!])} ${getString('between')} ${startTime} ${getString('and')} ${endTime}`;
         }
         return when;
     }

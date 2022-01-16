@@ -33,9 +33,10 @@ export default class Week {
     }
 
     public getDescription(): string {
-        const arrayKeys = Object.keys(this).filter(day => this[day]);
-        const lastKey = arrayKeys.pop();
-        return `${arrayKeys.join(', ')} ${CultureManager.getString('and')} ${lastKey}`;
+        const days = Object.keys(this).filter(day => this[day]);
+        const daysLocale = days.map(day => CultureManager.getString(day));
+        const lastday = daysLocale.pop();
+        return `${daysLocale.join(', ')} ${CultureManager.getString('and')} ${lastday}`;
     }
 
     public static readonly MONDAY = 1;
